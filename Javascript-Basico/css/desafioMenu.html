@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color:rgba(180, 212, 255, 0.856);
+            margin: 0;
+        }
+        .menu {
+            background-color: rgb(53, 47, 47);
+            padding: 5px;
+            border-bottom: solid 5px deepskyblue;
+        }
+        li > a {
+            text-decoration: none;
+            color: #fff;
+            font-family: Oswald;
+            padding: 17px 8px 17px 8px;
+        }
+        li {
+            list-style-type: none;
+            display: inline-block;
+        }
+        li a:hover, li a.selected {
+            background-color:deepskyblue;
+            color: black;
+        }
+        .logo {
+            position: absolute;
+            display: inline-block;
+            height: 80px;
+            padding: 15px;
+        }
+        .logo img {
+            height: 100%;
+            width: 123px;
+            height: 23px;
+            margin: 8px 10px;
+        }
+        .menu-toggle {
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 13px 15px;
+        }
+        li:first-child {
+            padding-left: 125px;
+        }
+        .destaque {
+            position: absolute;
+            right: 80px;
+            top: 10px;
+            font-family: Oswald;
+            color: #fff;
+            text-decoration: none;
+            border: solid rgb(241, 49, 49);
+            padding: 7px;
+            background-color: rgb(241, 49, 49);
+            border-radius: 30px;
+        }
+        .autenticacao > a:first-child {
+            position: absolute;
+            right: 170px;
+            top: 20px;
+            font-family: Oswald;
+            color: #fff;
+            text-decoration: none;
+        }
+        @media (min-width: 679px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        @media (max-width: 680px) {
+            li > a {
+                display: none;
+            }
+        }
+        @media (max-width: 910px) {
+            .autenticacao > a:first-child, .destaque {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        window.onhashchange = (e) => {
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            oldLink && oldLink.classList.remove('selected')
+            newLink && newLink.classList.add('selected')
+        }
+        
+    </script>
+</body>
+
+</html>

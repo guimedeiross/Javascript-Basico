@@ -1,0 +1,50 @@
+<video id="meuVideo" width="800" height="450" controls controlslist="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag de vídeo.
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<script>
+    const botaoPlay = document.querySelector("[wm-play]")
+    const botaoPause = document.querySelector("[wm-pause]")
+    const video3 = document.querySelector("#meuVideo")
+    const progresso = document.querySelector('[wm-progresso] > div')
+    const darPlay = () => video3.play()
+    const darPause = () => video3.pause()
+    video3.oncontextmenu = () => false
+    const mostrarProgresso = () => {
+        setInterval(() => {
+            const tempo =  video3.currentTime / video3.duration * 100
+            progresso.style.width = `${tempo}%`
+            progresso.innerHTML = `${tempo.toFixed(1)}%`
+        }, 500)}
+    botaoPlay.addEventListener('click',darPlay)
+    botaoPlay.addEventListener('click',mostrarProgresso)
+    botaoPause.addEventListener('click',darPause)
+</script>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+    }
+</style>
